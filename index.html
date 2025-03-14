@@ -148,7 +148,8 @@ class Enemy {
 		this.hitboxSize = 45;
                 this.height = 40;
                 this.speed = 2;
-                this.color = "red";
+                this.color = type === "special1" ? "green" : type === "special2" ? "purple" : "red";
+		this.points = type ==="special1" ? 25 : type === "special2" ? 50 : 10;
             }
             draw() {
                 ctx.fillStyle = this.color;
