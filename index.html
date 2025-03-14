@@ -149,7 +149,7 @@ class Enemy {
                 this.height = 40;
                 this.speed = 2;
                 this.color = type === "special1" ? "green" : type === "special2" ? "purple" : "red";
-		this.points = type ==="special1" ? 25 : type === "special2" ? 50 : 10;
+		this.points = type === "special1" ? 25 : type === "special2" ? 50 : 10;
             }
             draw() {
                 ctx.fillStyle = this.color;
