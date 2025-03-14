@@ -142,26 +142,24 @@ class Bullet {
         }
 
 class Enemy {
-            constructor(x, y) {
-                this.x = x;
-                this.y = y;
-                this.width = 40;
-		this.hitboxSize = 45;
-                this.height = 40;
-		this.color = "red"
-		this.points = 10;
+            constructor(x, y, speed) {
+              	this.x = x;
+		this.y = y;
+		this.speed = speed;
+		this.width = 40;
+		this.height = 40;
 		    
 		    }
-            }
-	
-            draw() {
-		    ctx.fillStyle = this.color;
+
+            draw(ctx) {
+		    ctx.fillStyle = "red";
 		    ctx.beginPath();
 		    ctx.moveTo(this.x, this.y);
 		    ctx.lineTo(this.x - this.width / 2, this.y - this.height);
 		    ctx.lineTo(this.x + this.width / 2, this.y - this.height);
 		    ctx.closePath();
 		    ctx.fill();
+		    
             }
 	
             update() {
@@ -176,9 +174,22 @@ class Enemy {
 function spawnEnemies() {
     setInterval(() => {
         if (!gameOver) {
-            enemies.push(new Enemy(x, 0, enemyType));
+		let x = Math.random() * (canvasWidth - 30);
+		let y = -Math.random() * 100;
+		let speed = Math.random() * 2 + 1;
+            enemies.push(new Enemy(x, 0, speed));
         }
-    }, 1000);
+    }
+function updateEnemies() {
+	for (let enemy of enemies) {
+		enemy.update();
+	}
+}
+
+	function drawEnemies(ctx) {
+		for (let enemy of enemies) {
+			enemy.draw(ctx)
+    }
 }
 
 function gameLoop() {
