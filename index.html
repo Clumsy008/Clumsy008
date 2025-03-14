@@ -148,22 +148,21 @@ class Enemy {
 		this.hitboxSize = 45;
                 this.height = 40;
 		this.type = type;
-
 		    if (type === "fast") {
-			    this.speed = 8;
+			    this.speed = 4;
 			    this.color = "yellow";
 			    this.points = 15;
-
 		    } else if (type === "strong") {
-			    this.speed = 3
+			    this.speed = 1.5;
 			    this.color = "purple";
-			    this.points = 25'
+			    this.points = 25;
 		    } else {
-			    this.speed = 5;
-			    this.color = "red";
+			this.speed = 2;
+			this.color = "red";
 			    this.points = 10;
 		    }
             }
+	
             draw() {
 		    ctx.fillStyle = this.color;
 		    ctx.beginPath();
@@ -183,24 +182,26 @@ class Enemy {
 	const bullets = [];
 	const enemies = [];
 	
-	function spawnEnemies() {
-		setInterval(() => {
-			if (!gameOver) {
-				let x = Math.random() * (canvas.width - 40);
+function spawnEnemies() {
+    setInterval(() => {
+        if (!gameOver) {
+            let x = Math.random() * (canvas.width - 40);
+            
+            // Randomly assign enemy type
+            let enemyType;
+            let rand = Math.random();
+            if (rand < 0.2) {
+                enemyType = "fast"; // 20% chance for fast enemy
+            } else if (rand < 0.35) {
+                enemyType = "strong"; // 15% chance for strong enemy
+            } else {
+                enemyType = "normal"; // 65% chance for normal enemy
+            }
 
-				let enemyType;
-				let rand = Math.random();
-				if (rand < 0.2) {
-					enemyType = "fast";
-				} else if (rand < 0.35) {
-					enemyType = "strong";
-				} else {
-					enemyType = "normal";
-				}
-
-				enemies.push(new Enemy(x, 0, enemyType));
-		}, 1000);
-	}
+            enemies.push(new Enemy(x, 0, enemyType));
+        }
+    }, 1000);
+}
 
 function gameLoop() {
             if (gameOver) return;
