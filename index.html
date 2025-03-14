@@ -148,8 +148,8 @@ class Enemy {
 		this.hitboxSize = 45;
                 this.height = 40;
                 this.speed = 2;
-                this.color = "red";
-		this.points = 10;
+                this.color = type === "special1" ? "green" : type === "special2" ? "purple" : "red";
+		this.points = type === "special1" ? 25 : type === "special2" ? 50 : 10;
             }
             draw() {
                 ctx.fillStyle = this.color;
@@ -172,8 +172,10 @@ class Enemy {
 	function spawnEnemies() {
 		setInterval(() => {
 			if (!gameOver) {
-				let x = Math.random() * (canvas.width - 40) + 20;
-				enemies.push(new Enemy(x,40));
+				let spawnAreaWidth = canvas.width * 0.5;
+				let x = (canvas.width / 2 - spawnAreaWidth / 2) + Math.random() * spawnAreaWidth;
+				let enemyType = math.random() < 0.2 ? "special1" : Math.random() < 0.1 ? "special2" : "normal";
+				enemies.push(new Enemy(x, 0, enemyType));
 			}
 		}, 1000);
 	}
