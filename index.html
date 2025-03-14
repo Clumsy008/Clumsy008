@@ -152,11 +152,7 @@ class Enemy {
 			    this.speed = 4;
 			    this.color = "yellow";
 			    this.points = 15;
-		    } else if (type === "strong") {
-			    this.speed = 1.5;
-			    this.color = "purple";
-			    this.points = 25;
-		    } else {
+		    else {
 			this.speed = 2;
 			this.color = "red";
 			    this.points = 10;
@@ -192,9 +188,8 @@ function spawnEnemies() {
             let rand = Math.random();
             if (rand < 0.2) {
                 enemyType = "fast"; // 20% chance for fast enemy
-            } else if (rand < 0.35) {
-                enemyType = "strong"; // 15% chance for strong enemy
-            } else {
+            } 
+            else {
                 enemyType = "normal"; // 65% chance for normal enemy
             }
 
