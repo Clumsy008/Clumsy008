@@ -57,8 +57,6 @@ body { margin: 0; overflow: hidden; background: black; color: white; font-family
         }
         button {
             font-size: 25px; padding: 18px; margin: 4px;
-	shootButton {
-		font-size: 25px; padding: 18px; margin: 4px;
         }
 
     </style>
@@ -103,7 +101,7 @@ let moveLeft = false, moveRight = false, shooting = false, shootInterval;
 			this.width = 40;
 			this.hitboxSiz = 50;
 			this.height = 40;
-			this.speed = 7;
+			this.speed = 6;
 			this.color = "blue";
 		}
 		draw() {
@@ -128,7 +126,7 @@ class Bullet {
                 this.width = 5;
                 this.height = 10;
                 this.speed = 7;
-                this.color = "red";
+                this.color = "green";
             }
             draw() {
                 ctx.fillStyle = this.color;
