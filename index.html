@@ -172,9 +172,8 @@ class Enemy {
 	function spawnEnemies() {
 		setInterval(() => {
 			if (!gameOver) {
-				let spawnAreaWidth = canvas.width * 0.5;
 				let x = (canvas.width / 2 - spawnAreaWidth / 2) + Math.random() * spawnAreaWidth;
-				let enemyType = math.random() < 0.2 ? "special1" : Math.random() < 0.1 ? "special2" : "normal";
+				let enemyType = Math.random() < 0.2 ? "special1" : Math.random() < 0.1 ? "special2" : "normal";
 				enemies.push(new Enemy(x, 0, enemyType));
 			}
 		}, 1000);
